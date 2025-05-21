@@ -1,0 +1,226 @@
+% Package imports
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{color}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{minted}  % For code listings with syntax highlighting
+\usepackage{enumitem} % For better list customization
+\usepackage{booktabs} % For better tables
+\usepackage{mathtools} % Enhanced math features
+\usepackage{tikz} % For drawing diagrams
+\usepackage{algorithm} % For algorithm descriptions
+\usepackage{algpseudocode} % For pseudocode
+
+% Page layout settings
+\geometry{margin=1in}
+
+% Header and footer settings
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Lecture Notes}
+\fancyhead[R]{\thepage}
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Custom math commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+% Define colors
+\definecolor{myblue}{RGB}{0, 102, 204}
+\definecolor{theoremcolor}{RGB}{230, 240, 255}
+\definecolor{problemcolor}{RGB}{230, 245, 235}
+\definecolor{definitioncolor}{RGB}{245, 240, 230}
+\definecolor{examplecolor}{RGB}{240, 230, 245}
+\definecolor{lemmacolor}{RGB}{220, 235, 255}
+\definecolor{corollarycolor}{RGB}{235, 245, 255}
+\definecolor{remarkcolor}{RGB}{245, 245, 245}
+
+% Hyperref settings
+\hypersetup{
+    colorlinks=true,
+    linkcolor=myblue,
+    urlcolor=myblue,
+    citecolor=myblue
+}
+
+% Custom mdframed styles for theorems
+\mdfdefinestyle{theoremstyle}{
+    linecolor=myblue,
+    % backgroundcolor=theoremcolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    skipabove=15pt,     % Space before the environment
+    % skipbelow=15pt      % Space after the environment
+}
+
+\mdfdefinestyle{problemstyle}{
+    linecolor=blue,
+    % backgroundcolor=problemcolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    % skipabove=15pt,     % Space before the environment
+    % skipbelow=15pt      % Space after the environment
+}
+
+\mdfdefinestyle{definitionstyle}{
+    linecolor=orange,
+    % backgroundcolor=definitioncolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    skipabove=15pt,     % Space before the environment
+    skipbelow=15pt      % Space after the environment
+}
+
+\mdfdefinestyle{examplestyle}{
+    linecolor=purple,
+    % backgroundcolor=examplecolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    % skipabove=15pt,     % Space before the environment
+    % skipbelow=15pt      % Space after the environment
+}
+
+\mdfdefinestyle{lemmastyle}{
+    linecolor=blue!70,
+    % backgroundcolor=lemmacolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    % skipabove=15pt,     % Space before the environment
+    % skipbelow=15pt      % Space after the environment
+}
+
+\mdfdefinestyle{corollarystyle}{
+    linecolor=blue!60,
+    % backgroundcolor=corollarycolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    % skipabove=15pt,     % Space before the environment
+    % skipbelow=15pt      % Space after the environment
+}
+
+\mdfdefinestyle{remarkstyle}{
+    linecolor=gray,
+    % backgroundcolor=remarkcolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    % skipabove=15pt,     % Space before the environment
+    % skipbelow=15pt      % Space after the environment
+}
+
+% Define theorem environments with mdframed
+\newmdtheoremenv[style=theoremstyle]{theorem}{Theorem}[section]
+\newmdtheoremenv[style=lemmastyle]{lemma}[theorem]{Lemma}
+\newmdtheoremenv[style=corollarystyle]{corollary}[theorem]{Corollary}
+\newmdtheoremenv[style=definitionstyle]{definition}[theorem]{Definition}
+\newmdtheoremenv[style=examplestyle]{example}[theorem]{Example}
+\newmdtheoremenv[style=remarkstyle]{remark}[theorem]{Remark}
+\newmdtheoremenv[style=problemstyle]{problem}{Problem}
+
+% Solution environment
+\newenvironment{solution}
+{\begin{mdframed}[
+    linecolor=black,
+    backgroundcolor=problemcolor,
+    linewidth=0pt,
+    innertopmargin=-10pt,
+    innerbottommargin=-10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    roundcorner=5pt,
+    shadow=false,
+    shadowcolor=black!30,
+    shadowsize=3pt,
+    % skipabove=15pt,     % Space before the environment
+    skipbelow=15pt      % Space after the environment
+]
+\textbf{\color{red}{Solution:}}
+}
+{\end{mdframed}}
+
+% Proof environment with some spacing
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=white,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    skipabove=10pt,
+    skipbelow=10pt
+]{proof}
+
+% Custom list spacing
+\setlist{itemsep=3pt, parsep=0pt}
+
+% Algorithm formatting
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+% Code listing settings
+\setminted{
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+}
