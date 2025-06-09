@@ -1,0 +1,164 @@
+\section{Ordered Sets}
+
+An ordering is a binary relation on a set of objects. 
+
+\begin{definition}
+    Let $\bm{P}$ be a set. An \text{\textbf{order}} (or \text{\textbf{partial order}}) on $\bm{P}$ is a binary relation $\leq$ on $\bm{P}$ 
+    such that for all $x, y, z \in \bm{P}$.
+    \begin{itemize}
+        \item (reflexivity) $x \leq x$
+        \item (antisymmetry) $x \leq y \land y \leq x \implies x = y$
+        \item (transitivity) $x \leq y \land y \leq z \implies x \leq z$
+    \end{itemize}
+\end{definition}
+
+\begin{align*}
+    \langle \bm{P}; \leq \rangle &\coloneqq \text{"ordered set" or "partially ordered set", poset.}\\
+                            &\coloneqq \text{A set } \bm{P} \text{ equipped with an order relation} \leq. 
+\end{align*}
+
+discrete order $\coloneqq$ "=" is an order on any set.\\
+guasi-order or pre-order $\coloneqq$  \\
+induced order $\coloneqq$ $x, y \in \bm{Q}, x \leq y \iff x \leq y \in \bm{P}, \text{where } \bm{Q} \subseteq \bm{P}.$\\
+
+\begin{definition}
+    Let $\bm{P}$ be an ordered set. Then $\bm{P}$ is a \text{\textbf{chain}} if for all $, y \in \bm{P}$, \text{either } $x \leq y \text{ or } y \leq x$.
+\end{definition}
+Chain can be called, \textit{linearly ordered set}, or \textit{totally ordered set}.\\
+\textbf{Antichain} $\coloneqq$ if $x \leq y \text{ in } \bm{P} \text{ only if } x = y$.
+Hence, any set $\bm{S}$ may be converted into an antichain $\bar{\bm{S}}$ by giving $\bm{S}$ the discrete order.
+
+\begin{definition}{Order-isomorphisms}
+    $\bm{P} \cong \bm{Q}$, if there exists a map $\varphi$ from $\bm{P}$ onto $\bm{Q}$ such that $x \leq y$ in $\bm{P} \iff \varphi(x) \leq \varphi(y)$ in $\bm{Q}$.
+    Then $\varphi$ is called an "order-isomorphism".
+\end{definition}
+
+\textbf{Note:} order-isomorphism $\Rightarrow$ bijection (one-to-one and onto). Hence, 
+\[
+    \varphi \colon \bm{P} \rightarrow \bm{Q}, \quad \varphi\inv \colon \bm{Q} \rightarrow \bm{P}
+\].
+
+\begin{definition}
+    Powerset $\wp(\bm{X})$, consisting of all subsets of x, is ordered by set inclusion:\\
+    for $A, B \in \wp(\bm{X})$, we define: $A \leq B \iff A \subseteq B$.
+\end{definition}
+\textbf{Note:} any subset of $\wp(\bm{X})$ inherits the inclusion order.
+
+\begin{align*}
+    Predicate &\coloneqq \text{ A statement taking value } T (\text{true}) \text{ or value } F (\text{false}).\\
+    &\coloneqq x \rightarrow \{T, F\}.
+\end{align*}
+\begin{example}
+\[
+    p \colon \mathbb{R} \rightarrow \{T, F\}
+\]
+\[
+    p(x) = \begin{cases} T, &\text{if } x \geq 0 \\ 
+                        F, &\text{if } x < 0
+            \end{cases}
+\]
+\end{example}
+$\mathbb{P}(\bm{X}) \coloneqq$ The set of predicates on $\bm{X}$.\\
+Let $p$ and $q$ are predicate. Then we denote by 
+\[
+    p \stackrel{}{\Rrightarrow} q \iff \{x \in \bm{X} \mid p(x) = T \} \subseteq \{x \in \bm{X} \mid g(x) = T \}.
+\]
+
+\begin{definition}{The convering relation}
+    Let $\bm{P}$ be an ordered set, $x, y \in \bm{P}$ 
+    \[
+        \left\{
+        \begin{array}{l}
+            x \text{ is covered by } y \\
+            y \text{ covers } x
+        \end{array}
+        \right\}.
+    \]
+    \[
+        x \coveredby y \text{ or } y \covering x
+    \]
+\end{definition}
+
+\textbf{Note:} $x < y \land x \leq z < y \rightarrow x = z$.\\
+\textbf{Note:} if $\bm{P}$ is finite, 
+\begin{align*}
+    x < y \iff &\text{ there exists a finite sequence of covering relations }\\
+    &x = x_0 \coveredby x_1 \coveredby x_2 \dots \coveredby x_n = y
+\end{align*}
+
+\begin{example}
+    In the chain $\mathbb{N}$, we have $m \coveredby n \iff n = m + 1$.
+\end{example}
+\begin{example}
+    In $\mathbb{R}$, there are \textcolor{red}{no pairs} $x, y$ such that $x \coveredby y$.
+\end{example}
+\begin{example}
+    In $\wp(\bm{X})$, we have 
+    \[
+        \bm{A} \coveredby \bm{B} \iff \bm{B} = \bm{A} \cup \{b\},
+    \]
+    for same $b \in \bm{X} \setminus \bm{A}$. 
+\end{example}
+
+\newpage 
+
+\textbf{Diagrams Rules: (Hasse diagram)}
+\begin{enumerate}
+    \item To each point $x \in \bm{P}$, associate a point $p(x)$ of the Euclidean plane $\mathbb{R}^2$, depicted by a small circle with centre at $p(x)$.
+    \item For each covering pair $x \coveredby y \text{ in } \bm{P}$, take a line segment $\ell(x,y)$ joining the circle at $p(x)$ to the circle at $p(y)$.
+    \item Carry out 1. and 2. in such a way that:
+        \begin{enumerate}
+            \item if $x \coveredby y$, then $p(x)$ is "lower" than $p(y)$.
+            \item the circle at $p(z)$ does not intersect the line segment $\ell(x,y)$ if $z \neq x \land z \neq y$.
+        \end{enumerate}
+\end{enumerate}
+By diagram, 
+\[
+    x < y \iff \text{ there is a sequence of connected line segments moving upwards from } x \text{ to } y.
+\]
+
+\begin{lemma}
+    Let $\bm{P}$ and $\bm{Q}$ be finite ordered sets and let $\varphi \colon \bm{P} \rightarrow \bm{Q}$ be a bijective map.
+    Then the following are equivalent: 
+    \begin{enumerate}
+        \item $\varphi$ is an order-isomorphism. 
+        \item $x < y \text{ in } \bm{P} \iff \varphi(x) < \varphi(y) \text{ in } \bm{Q}$.
+        \item $x \coveredby y \text{ in } \bm{P} \iff \varphi(x) \coveredby \varphi(y) \text{ in } \bm{Q}$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proposition}
+    Two finite ordered sets $\bm{P}$ and $\bm{Q}$ are order-isomorphic iff they can be drawn with identical diagrams.
+\end{proposition}
+
+\begin{definition}{The dual of an ordered set}
+    Given any ordered set $\bm{P}$, we can form a new ordered set $\bm{P}^{\partial}$ \textcolor{red}{(the dual of $\bm{P}$)} by defining $x \leq y$ 
+    to hold in $\bm{P}^{\partial} \iff y \leq x$ holds in $\bm{P}$.
+\end{definition}
+
+\textcolor{red}{\textbf{The Duality Principle:} \\ 
+Given a statement $\Phi$ about ordered sets which is true in all ordered sets, the dual statement $\Phi^{\partial}$ is also true in all ordered set.
+}
+\\
+
+\textbf{Note:}
+\begin{align*}
+    \perp \in \bm{P} &\colon \text{ bottom, if } \perp \leq x, \forall x \in \bm{P}.\\
+    \top \in \bm{P} &\colon \text{ top, if } \top \geq x, \forall x \in \bm{P}.
+\end{align*}
+PS $\perp$ and $\top$ are unique, by duality principle and antisymmetry.
+
+\begin{definition}{Maximal (\textcolor{red}{MaxQ})}
+    Let $\bm{P}$ be an ordered set and let $\bm{Q} \subseteq \bm{P}$.
+    Then $a \in \bm{Q}$ is a maximal element of $\bm{Q}$ if $a \leq x \land x \in \bm{Q} \implies a = x$.
+\end{definition}
+\begin{definition}{Minimal (\textcolor{red}{MinQ})}
+    Let $\bm{P}$ be an ordered set and let $\bm{Q} \subseteq \bm{P}$.
+    Then $a \in \bm{Q}$ is a minimal element of $\bm{Q}$ if $a \geq x \land x \in \bm{Q} \implies a = x$.
+\end{definition}
+\begin{definition}{Maximum (\textcolor{red}{$\top_Q = maxQ$})}
+    If $\bm{Q}$ (with the order inherited from $\bm{P}$) has a top element, $\top_Q$, then $MaxQ = \{\top_Q\}$.
+\end{definition}
+\begin{definition}{Minimum (\textcolor{red}{$\perp_Q = minQ$})}
+    If $\bm{Q}$ (with the order inherited from $\bm{P}$) has a bottom element, $\perp_Q$, then $MinQ = \{\perp_Q\}$.
+\end{definition}
