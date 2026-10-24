@@ -1,0 +1,3 @@
+[submodule "LaTeX-Template"]
+	path = LaTeX-Template
+	url = git@github.com:ytsao/LaTeX-Template.git
