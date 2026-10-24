@@ -4,3 +4,9 @@ install-tl-20250325/
 *.aux 
 *.fls
 *.gz
+*.bcf
+*.blg
+*.log
+*.out
+*.toc
+*.xml

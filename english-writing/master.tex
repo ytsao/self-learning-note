@@ -1,10 +1,9 @@
 \documentclass[a4paper]{report}
 \input{header.tex}
-\author{Pingbang Hu}
-\title{Note Template}
+\author{Yi-Nung Tsao}
+\title{English Writing}
 
 \thispagestyle{empty}
-\addbibresource{reference.bib}
 
 \usepackage{adjustbox}
 \usepackage{centernot}
@@ -14,27 +13,101 @@
 \maketitle
 
 \begin{abstract}
-	This is a note template, with all but minimal compilable files provided. Feel free to adjust for your usage.
-
-	Now let's start a simple demo for you to take fancy notes in \LaTeX!
+	This is my academic writing note. Try to use this note to improve my writing skills. 
 \end{abstract}
 
 \newpage
 
 \tableofcontents
 
-\lec{1}{2}
+\chapter{The general principle of academic writing}
+\section{Some of my weakness}
 
-\newpage
-%─────Appendix────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-\appendix
-\appendixpage{}
+\begin{itemize}
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
 
-\input{appendix.tex}
+Examples 
 
-\newpage
-%─────Reference──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-\pagestyle{plain}
-\printbibliography{}
+
+
+How to improve my writing skills?
+
+
+
+\chapter{The structure of the TACAS paper}
+\section{Title}
+
+
+\section{Abstract}
+\begin{itemize}
+\item Explicitly point out soundness issues happened in GPU and MILP.
+\item Use continuous constraint programming (abstract satisfaction) to examine neural network verification.
+\item Mention 3 different propagators and the underlying parallel framework of SymJET is lock-free asynchronous.
+\item All the results are machine-checked by autoformalization. 
+\item The comparison of experimental results of different solvers.  
+\end{itemize}
+
+\section{Introduction}
+\begin{itemize}
+\item Simply introduce neural network verification.
+\item There are bunch of neural network verifiers, but these tools typically have soundness issues:
+	\begin{itemize}
+	\item Ignore FP rounding errors on GPU.
+	\item Use MIP solvers.
+	\end{itemize}
+These results are demonstrated in the experimental section.
+\item How to reduce the soundness issue? What is the position of this paper?
+	\begin{itemize}
+	\item Use CCP.
+	\item The connection between NNV and CCP.
+	\item How to formalize NNV by CCP?
+	\item The proposed CCP solver is lock-free.
+	\end{itemize}
+\item Contributions 
+\item Introduce autoformalization, and how it is going to be used through the paper.
+\end{itemize}
+
+\section{Abstract Satisfaction}
+\begin{itemize}
+\item Introduction
+\item Logical concrete domain
+\item Floating-point interval abstraction
+\item Galois connection 
+\item Soundness and interval propagators
+\item Parallel greatest fixpoint 
+\end{itemize}
+
+\section{NNV by Constraint Propagation}
+\begin{itemize}
+\item List out our contributions 
+\item Neural concrete domain 
+\item Neural network verification problem 
+\item Feedforward neural networks 
+\item From neural to constraint representation 
+\end{itemize}
+
+\section{Specialized Neural Network Interval Abstraction}
+\begin{itemize}
+\item Mention the connection with the previous section, and contributions. 
+\item Graph-based propagator
+\item Symbolic propagation
+\end{itemize}
+
+\section{Experimental Results}
+\begin{itemize}
+\item Environment settings
+\item The soundness issue on GPU 
+\item VNN-COMP 2025 
+\item Discussion (removed)
+\end{itemize}
+
+\section{Conclusion}
+
+\chapter{The structure of the CPAIOR paper}
+
 
 \end{document}
